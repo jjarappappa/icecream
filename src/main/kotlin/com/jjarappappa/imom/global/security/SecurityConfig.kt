@@ -1,0 +1,37 @@
+package com.jjarappappa.imom.global.security
+
+import org.springframework.beans.factory.annotation.Configurable
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.SecurityFilterChain
+import javax.servlet.http.HttpServletRequest
+
+@Configuration
+@EnableWebSecurity
+class SecurityConfig (){
+
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
+    }
+
+    @Bean
+    fun filterChain(http: HttpSecurity): SecurityFilterChain? {
+        http
+            .httpBasic().disable()
+            .formLogin().disable()
+            .csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+            .and()
+            .authorizeRequests()
+            .anyRequest().permitAll()
+
+        return http.build()
+    }
+}
