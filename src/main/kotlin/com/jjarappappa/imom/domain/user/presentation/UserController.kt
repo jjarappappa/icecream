@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/user")
@@ -14,7 +15,7 @@ class UserController (
 ){
 
     @PostMapping
-    fun joinUser(@RequestBody request: UserJoinRequest) {
+    fun joinUser(@RequestBody @Valid request: UserJoinRequest) {
         userService.createUser(request);
     }
 }
