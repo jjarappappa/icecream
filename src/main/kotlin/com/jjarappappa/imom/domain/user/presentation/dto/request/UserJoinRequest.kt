@@ -2,6 +2,7 @@ package com.jjarappappa.imom.domain.user.presentation.dto.request
 
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
+import org.springframework.security.crypto.password.PasswordEncoder
 
 class UserJoinRequest (
     val name: String,
@@ -13,12 +14,12 @@ class UserJoinRequest (
     var address: String,
 ){
 
-    fun toEntity(): User {
+    fun toEntity(passwordEncoder: PasswordEncoder): User {
         return User(
             name,
             nickName,
             email,
-            password,
+            passwordEncoder.encode(password),
             Authority.USER,
             birthday,
             phoneNumber,
