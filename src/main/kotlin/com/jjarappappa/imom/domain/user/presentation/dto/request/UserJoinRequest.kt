@@ -2,7 +2,6 @@ package com.jjarappappa.imom.domain.user.presentation.dto.request
 
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
-import java.time.LocalDateTime
 
 class UserJoinRequest (
     val name: String,

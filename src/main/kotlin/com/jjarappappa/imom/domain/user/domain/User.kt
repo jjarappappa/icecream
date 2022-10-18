@@ -2,7 +2,6 @@ package com.jjarappappa.imom.domain.user.domain
 
 import com.jjarappappa.imom.domain.user.domain.type.Authority
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
-import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
