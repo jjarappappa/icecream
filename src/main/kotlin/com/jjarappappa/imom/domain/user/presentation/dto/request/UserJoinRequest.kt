@@ -7,18 +7,25 @@ import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 
 data class UserJoinRequest (
+
     @field:NotBlank
     val name: String,
+
     @field:NotBlank
     var nickName: String,
+
     @field:Email
     val email: String,
+
     @field:NotBlank
     var password: String,
+
     @field:NotBlank
     var birthday: String,
+
     @field:NotBlank
     var phoneNumber: String,
+
     @field:NotBlank
     var address: String,
 ){

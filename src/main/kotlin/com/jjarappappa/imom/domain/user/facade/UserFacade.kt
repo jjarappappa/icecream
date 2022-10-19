@@ -6,7 +6,6 @@ import com.jjarappappa.imom.domain.user.exception.*
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserJoinRequest
 import com.jjarappappa.imom.global.security.auth.AuthDetails
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
@@ -24,7 +23,7 @@ class UserFacade (
             throw PhoneNumberAlreadyExists.EXCEPTION
         }
 
-        if(userRepository.existsByNickName(request.nickName)) {
+        if(userRepository.existsByNickname(request.nickName)) {
             throw NickNameAlreadyExists.EXCEPTION
         }
     }

@@ -20,7 +20,7 @@ class UserProfileResponse (
         fun of(user: User): UserProfileResponse {
             return UserProfileResponse(
                 user.name,
-                user.nickName,
+                user.nickname,
                 user.email,
                 user.birthday,
                 user.phoneNumber,

@@ -11,7 +11,7 @@ class User (
         val name: String,
 
         @Column(length = 15, nullable = false, unique = true)
-        var nickName: String,
+        var nickname: String,
 
         @Column(length = 50, nullable = false, unique = true)
         val email: String,
