@@ -16,15 +16,15 @@ class UserFacade (
     fun validateCreateUser(request: UserJoinRequest) {
 
         if(userRepository.existsByEmail(request.email)) {
-            throw EmailAlreadyExists.EXCEPTION
+            throw EmailAlreadyExistsException.EXCEPTION
         }
 
         if(userRepository.existsByPhoneNumber(request.phoneNumber)) {
-            throw PhoneNumberAlreadyExists.EXCEPTION
+            throw PhoneNumberAlreadyExistsException.EXCEPTION
         }
 
-        if(userRepository.existsByNickname(request.nickName)) {
-            throw NickNameAlreadyExists.EXCEPTION
+        if(userRepository.existsByNickname(request.nickname)) {
+            throw NickNameAlreadyExistsException.EXCEPTION
         }
     }
 
