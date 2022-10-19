@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component
 @Component
 class UserFacade (
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder,
 ){
 
     fun validateCreateUser(request: UserJoinRequest) {
@@ -33,12 +32,6 @@ class UserFacade (
     fun findUserByEmail(email: String): User {
         return userRepository.findByEmail(email)
             ?: throw UserNotFoundException.EXCEPTION
-    }
-
-    fun checkPassword(actual: String, expected: String) {
-        if (passwordEncoder.matches(actual, expected)) {
-            throw PasswordMismatchException.EXCEPTION
-        }
     }
 
     fun getCurrentUser(): User {

@@ -1,6 +1,7 @@
 package com.jjarappappa.imom.domain.user.service
 
 import com.jjarappappa.imom.domain.user.domain.repository.UserRepository
+import com.jjarappappa.imom.domain.user.exception.PasswordMismatchException
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserJoinRequest
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserLoginRequest
@@ -30,11 +31,17 @@ class UserService (
     fun login(request: UserLoginRequest): TokenResponse {
 
         val user = userFacade.findUserByEmail(request.email)
-        userFacade.checkPassword(user.password, request.password)
+        checkPassword(user.password, request.password)
 
         val accessToken = jwtProvider.createAccessToken(request.email)
 
         return TokenResponse(accessToken)
+    }
+
+    fun checkPassword(actual: String, expected: String) {
+        if (passwordEncoder.matches(actual, expected)) {
+            throw PasswordMismatchException.EXCEPTION
+        }
     }
 
     fun getProfile(): UserProfileResponse {
