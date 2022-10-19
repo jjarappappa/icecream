@@ -38,12 +38,13 @@ class UserService (
         return TokenResponse(accessToken)
     }
 
-    fun checkPassword(actual: String, expected: String) {
+    private fun checkPassword(actual: String, expected: String) {
         if (passwordEncoder.matches(actual, expected)) {
             throw PasswordMismatchException.EXCEPTION
         }
     }
 
+    @Transactional(readOnly = true)
     fun getProfile(): UserProfileResponse {
         val user = userFacade.getCurrentUser();
         return UserProfileResponse.of(user)
