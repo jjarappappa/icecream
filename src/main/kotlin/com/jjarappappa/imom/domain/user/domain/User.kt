@@ -8,7 +8,7 @@ import javax.persistence.*
 @Table(name = "tbl_user")
 class User (
         @Column(length = 50, nullable = false)
-        val name: String,
+        var name: String,
 
         @Column(length = 15, nullable = false, unique = true)
         var nickname: String,
@@ -35,4 +35,12 @@ class User (
         @Column(nullable = false, unique = true)
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-): BaseTimeEntity() {}
+): BaseTimeEntity() {
+
+        fun updateProfile(name: String, nickname: String, birthday: String, address: String) {
+                this.name = name
+                this.nickname = nickname
+                this.birthday = birthday
+                this.address = address
+        }
+}

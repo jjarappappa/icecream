@@ -1,10 +1,12 @@
 package com.jjarappappa.imom.domain.user.service
 
+import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.repository.UserRepository
 import com.jjarappappa.imom.domain.user.exception.PasswordMismatchException
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserJoinRequest
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserLoginRequest
+import com.jjarappappa.imom.domain.user.presentation.dto.request.UserUpdateRequest
 import com.jjarappappa.imom.domain.user.presentation.dto.response.TokenResponse
 import com.jjarappappa.imom.domain.user.presentation.dto.response.UserProfileResponse
 import com.jjarappappa.imom.global.security.jwt.JwtProvider
@@ -48,5 +50,19 @@ class UserService (
     fun getProfile(): UserProfileResponse {
         val user = userFacade.getCurrentUser();
         return UserProfileResponse.of(user)
+    }
+
+    @Transactional
+    fun updateProfile(request: UserUpdateRequest) {
+        val user:User = userFacade.getCurrentUser();
+
+        userFacade.validateUpdateUser(request.nickname)
+
+        user.updateProfile(
+            request.name,
+            request.nickname,
+            request.birthday,
+            request.address,
+        );
     }
 }

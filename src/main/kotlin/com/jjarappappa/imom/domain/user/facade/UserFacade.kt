@@ -38,4 +38,10 @@ class UserFacade (
             SecurityContextHolder.getContext().authentication.principal as AuthDetails
         return findUserByEmail(auth.username)
     }
+
+    fun validateUpdateUser(nickname: String) {
+        if (userRepository.existsByNickname(nickname)) {
+            throw NickNameAlreadyExistsException.EXCEPTION
+        }
+    }
 }
