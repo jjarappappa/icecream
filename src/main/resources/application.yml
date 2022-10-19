@@ -12,4 +12,10 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: update
+
+jwt:
+  access-token-valid-time: ${JWT_ACCESS_TIME}
+  prefix: Bearer
+  header: Authorization
+  secret-key: ${JWT_SECRET}

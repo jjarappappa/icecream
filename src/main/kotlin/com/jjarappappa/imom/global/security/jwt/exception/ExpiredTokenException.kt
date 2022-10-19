@@ -1,8 +1,8 @@
-package com.jjarappappa.imom.domain.user.exception
+package com.jjarappappa.imom.global.security.jwt.exception
 
 import com.jjarappappa.imom.global.error.exception.ErrorCode
 import com.jjarappappa.imom.global.error.exception.IMomException
 
-object EmailAlreadyExists: IMomException(ErrorCode.EMAIL_ALREADY_EXISTS) {
+object ExpiredTokenException: IMomException(ErrorCode.EXPIRED_TOKEN) {
     val EXCEPTION by lazy { this }
 }

@@ -1,7 +1,7 @@
 package com.jjarappappa.imom.global.error
 
 import com.jjarappappa.imom.global.error.exception.ErrorCode
-import com.jjarappappa.imom.global.error.exception.IceCreamException
+import com.jjarappappa.imom.global.error.exception.IMomException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
-class IceCreamExceptionHandler {
+class IMomExceptionHandler {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
     @ResponseStatus(value = HttpStatus.CONFLICT)
-    @ExceptionHandler(IceCreamException::class)
+    @ExceptionHandler(IMomException::class)
     fun handleIceCreamException(
-        e: IceCreamException,
+        e: IMomException,
         request: HttpServletRequest
     ): ErrorResponse {
         log.error("errorCode: {}, url: {}, message: {}",
