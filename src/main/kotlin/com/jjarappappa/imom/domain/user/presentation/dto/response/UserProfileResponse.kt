@@ -5,7 +5,7 @@ import com.jjarappappa.imom.domain.user.domain.User
 class UserProfileResponse (
     val name: String,
 
-    var nickName: String,
+    var nickname: String,
 
     val email: String,
 

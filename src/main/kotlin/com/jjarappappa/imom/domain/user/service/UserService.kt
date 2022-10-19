@@ -31,7 +31,7 @@ class UserService (
     fun login(request: UserLoginRequest): TokenResponse {
 
         val user = userFacade.findUserByEmail(request.email)
-        checkPassword(user.password, request.password)
+        checkPassword(request.password, user.password)
 
         val accessToken = jwtProvider.createAccessToken(request.email)
 
