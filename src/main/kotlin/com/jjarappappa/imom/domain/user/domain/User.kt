@@ -5,7 +5,7 @@ import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import javax.persistence.*
 
 @Entity
-@Table(name = "user_tbl")
+@Table(name = "tbl_user")
 class User (
         @Column(length = 50, nullable = false)
         val name: String,
