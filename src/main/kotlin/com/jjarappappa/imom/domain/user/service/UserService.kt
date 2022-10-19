@@ -5,6 +5,7 @@ import com.jjarappappa.imom.domain.user.facade.UserFacade
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserJoinRequest
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserLoginRequest
 import com.jjarappappa.imom.domain.user.presentation.dto.response.TokenResponse
+import com.jjarappappa.imom.domain.user.presentation.dto.response.UserProfileResponse
 import com.jjarappappa.imom.global.security.jwt.JwtProvider
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -34,5 +35,10 @@ class UserService (
         val accessToken = jwtProvider.createAccessToken(request.email)
 
         return TokenResponse(accessToken)
+    }
+
+    fun getProfile(): UserProfileResponse {
+        val user = userFacade.getCurrentUser();
+        return UserProfileResponse.of(user)
     }
 }

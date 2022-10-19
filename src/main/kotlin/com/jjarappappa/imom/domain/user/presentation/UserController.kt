@@ -1,11 +1,9 @@
 package com.jjarappappa.imom.domain.user.presentation
 
 import com.jjarappappa.imom.domain.user.presentation.dto.request.UserJoinRequest
+import com.jjarappappa.imom.domain.user.presentation.dto.response.UserProfileResponse
 import com.jjarappappa.imom.domain.user.service.UserService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -17,5 +15,10 @@ class UserController (
     @PostMapping
     fun joinUser(@RequestBody @Valid request: UserJoinRequest) {
         userService.createUser(request);
+    }
+
+    @GetMapping
+    fun getProfile(): UserProfileResponse {
+        return userService.getProfile();
     }
 }
