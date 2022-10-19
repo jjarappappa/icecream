@@ -15,7 +15,7 @@ class AuthController (
    val userService: UserService,
 ) {
 
-    @PostMapping("/login")
+    @PostMapping
     fun login(@RequestBody @Valid request: UserLoginRequest): TokenResponse {
         return userService.login(request);
     }
