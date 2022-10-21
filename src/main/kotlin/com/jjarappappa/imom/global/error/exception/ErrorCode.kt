@@ -16,4 +16,6 @@ enum class ErrorCode (
     USER_NOT_FOUND( 404, "존재하지 않는 유저입니다."),
     PASSWORD_MISMATCH( 401, "비밀번호가 틀렸습니다."),
 
+    IMAGE_EMPTY(422, "이미지가 비었습니다."),
+    UPLOAD_IMAGE_FAILED(422, "이미지 업로드에 실패했습니다."),
 }
