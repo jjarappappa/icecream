@@ -3,6 +3,7 @@ package com.jjarappappa.imom.domain.user.presentation.dto.request
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
 import org.springframework.security.crypto.password.PasswordEncoder
+import java.time.LocalDate
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 
@@ -21,7 +22,7 @@ data class UserJoinRequest (
     var password: String,
 
     @field:NotBlank
-    var birthday: String,
+    var birthday: LocalDate,
 
     @field:NotBlank
     var phoneNumber: String,
