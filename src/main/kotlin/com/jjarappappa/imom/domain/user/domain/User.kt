@@ -17,7 +17,7 @@ class User (
         @Column(length = 50, nullable = false, unique = true)
         val email: String,
 
-        @Column(length = 50, nullable = false)
+        @Column(nullable = false)
         var password: String,
 
         @Enumerated(EnumType.STRING)
@@ -27,7 +27,7 @@ class User (
         @Column(nullable = false)
         var birthday: LocalDate,
 
-        @Column(length = 15, nullable = false, unique = true)
+        @Column(name = "phone_number", length = 15, nullable = false, unique = true)
         var phoneNumber: String,
 
         @Column(length = 70, nullable = false, unique = true)
