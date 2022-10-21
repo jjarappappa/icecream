@@ -51,6 +51,7 @@ class UserService (
         return UserProfileResponse.of(user)
     }
 
+    @Transactional
     fun updateProfileImage(img: String) {
         val user: User = userFacade.getCurrentUser()
         user.updateProfileImage(img)
