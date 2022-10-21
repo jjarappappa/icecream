@@ -2,13 +2,14 @@ package com.jjarappappa.imom.domain.user.domain
 
 import com.jjarappappa.imom.domain.user.domain.type.Authority
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
+import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
 @Table(name = "tbl_user")
 class User (
         @Column(length = 50, nullable = false)
-        val name: String,
+        var name: String,
 
         @Column(length = 15, nullable = false, unique = true)
         var nickname: String,
@@ -23,10 +24,10 @@ class User (
         @Column(length = 10, nullable = false)
         var authority: Authority,
 
-        @Column(length = 50, nullable = false)
-        var birthday: String,
+        @Column(nullable = false)
+        var birthday: LocalDate,
 
-        @Column(length = 15, nullable = false, unique = true)
+        @Column(name = "phone_number", length = 15, nullable = false, unique = true)
         var phoneNumber: String,
 
         @Column(length = 70, nullable = false, unique = true)
@@ -40,7 +41,15 @@ class User (
         val id: Long? = null,
 ): BaseTimeEntity() {
 
+
     fun updateProfileImage(profileImg: String) {
             this.profileImg = profileImg
+    }
+
+    fun updateProfile(name: String, nickname: String, birthday: LocalDate, address: String) {
+            this.name = name
+            this.nickname = nickname
+            this.birthday = birthday
+            this.address = address
     }
 }

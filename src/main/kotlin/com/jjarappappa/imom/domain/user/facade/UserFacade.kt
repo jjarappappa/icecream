@@ -16,15 +16,15 @@ class UserFacade (
     fun validateCreateUser(request: UserJoinRequest) {
 
         if(userRepository.existsByEmail(request.email)) {
-            throw EmailAlreadyExists.EXCEPTION
+            throw EmailAlreadyExistsException.EXCEPTION
         }
 
         if(userRepository.existsByPhoneNumber(request.phoneNumber)) {
-            throw PhoneNumberAlreadyExists.EXCEPTION
+            throw PhoneNumberAlreadyExistsException.EXCEPTION
         }
 
-        if(userRepository.existsByNickname(request.nickName)) {
-            throw NickNameAlreadyExists.EXCEPTION
+        if(userRepository.existsByNickname(request.nickname)) {
+            throw NickNameAlreadyExistsException.EXCEPTION
         }
     }
 
@@ -37,5 +37,11 @@ class UserFacade (
         val auth: AuthDetails =
             SecurityContextHolder.getContext().authentication.principal as AuthDetails
         return findUserByEmail(auth.username)
+    }
+
+    fun validateUpdateUser(nickname: String) {
+        if (userRepository.existsByNickname(nickname)) {
+            throw NickNameAlreadyExistsException.EXCEPTION
+        }
     }
 }
