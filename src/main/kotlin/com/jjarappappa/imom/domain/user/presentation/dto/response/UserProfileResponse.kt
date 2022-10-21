@@ -1,6 +1,7 @@
 package com.jjarappappa.imom.domain.user.presentation.dto.response
 
 import com.jjarappappa.imom.domain.user.domain.User
+import java.time.LocalDate
 
 class UserProfileResponse (
     val name: String,
@@ -9,7 +10,7 @@ class UserProfileResponse (
 
     val email: String,
 
-    var birthday: String,
+    var birthday: LocalDate,
 
     var phoneNumber: String,
 

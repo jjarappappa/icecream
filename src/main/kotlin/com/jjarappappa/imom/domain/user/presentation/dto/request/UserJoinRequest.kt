@@ -1,8 +1,10 @@
 package com.jjarappappa.imom.domain.user.presentation.dto.request
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
 import org.springframework.security.crypto.password.PasswordEncoder
+import java.time.LocalDate
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 
@@ -12,7 +14,7 @@ data class UserJoinRequest (
     val name: String,
 
     @field:NotBlank
-    var nickName: String,
+    var nickname: String,
 
     @field:Email
     val email: String,
@@ -20,8 +22,12 @@ data class UserJoinRequest (
     @field:NotBlank
     var password: String,
 
-    @field:NotBlank
-    var birthday: String,
+    @JsonFormat(
+        shape = JsonFormat.Shape.STRING,
+        pattern = "yyyy-MM-dd",
+        timezone = "Asia/Seoul"
+    )
+    var birthday: LocalDate,
 
     @field:NotBlank
     var phoneNumber: String,
@@ -33,7 +39,7 @@ data class UserJoinRequest (
     fun toEntity(passwordEncoder: PasswordEncoder): User {
         return User(
             name,
-            nickName,
+            nickname,
             email,
             passwordEncoder.encode(password),
             Authority.USER,
