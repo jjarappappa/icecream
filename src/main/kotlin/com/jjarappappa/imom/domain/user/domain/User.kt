@@ -16,7 +16,7 @@ class User (
         @Column(length = 50, nullable = false, unique = true)
         val email: String,
 
-        @Column(length = 50, nullable = false)
+        @Column(nullable = false)
         var password: String,
 
         @Enumerated(EnumType.STRING)
@@ -31,6 +31,9 @@ class User (
 
         @Column(length = 70, nullable = false, unique = true)
         var address: String,
+
+        @Column(nullable = false)
+        var profileImg: String,
 
         @Column(nullable = false, unique = true)
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
