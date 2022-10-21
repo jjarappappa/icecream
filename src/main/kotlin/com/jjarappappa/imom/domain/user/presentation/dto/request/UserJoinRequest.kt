@@ -2,6 +2,7 @@ package com.jjarappappa.imom.domain.user.presentation.dto.request
 
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
+import com.jjarappappa.imom.infrastructure.image.s3.DefaultProfileImage
 import org.springframework.security.crypto.password.PasswordEncoder
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
@@ -40,6 +41,7 @@ data class UserJoinRequest (
             birthday,
             phoneNumber,
             address,
+            DefaultProfileImage.URL
         )
     }
 }
