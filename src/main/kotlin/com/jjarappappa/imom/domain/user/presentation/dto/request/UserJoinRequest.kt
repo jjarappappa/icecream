@@ -1,5 +1,6 @@
 package com.jjarappappa.imom.domain.user.presentation.dto.request
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.type.Authority
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -21,7 +22,11 @@ data class UserJoinRequest (
     @field:NotBlank
     var password: String,
 
-    @field:NotBlank
+    @JsonFormat(
+        shape = JsonFormat.Shape.STRING,
+        pattern = "yyyy-MM-dd",
+        timezone = "Asia/Seoul"
+    )
     var birthday: LocalDate,
 
     @field:NotBlank
