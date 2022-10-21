@@ -38,4 +38,9 @@ class User (
         @Column(nullable = false, unique = true)
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-): BaseTimeEntity() {}
+): BaseTimeEntity() {
+
+    fun updateProfileImage(profileImg: String) {
+            this.profileImg = profileImg
+    }
+}

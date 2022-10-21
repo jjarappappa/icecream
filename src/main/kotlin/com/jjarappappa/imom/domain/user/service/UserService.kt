@@ -1,5 +1,6 @@
 package com.jjarappappa.imom.domain.user.service
 
+import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.domain.user.domain.repository.UserRepository
 import com.jjarappappa.imom.domain.user.exception.PasswordMismatchException
 import com.jjarappappa.imom.domain.user.facade.UserFacade
@@ -48,5 +49,10 @@ class UserService (
     fun getProfile(): UserProfileResponse {
         val user = userFacade.getCurrentUser();
         return UserProfileResponse.of(user)
+    }
+
+    fun updateProfileImage(img: String) {
+        val user: User = userFacade.getCurrentUser()
+        user.updateProfileImage(img)
     }
 }

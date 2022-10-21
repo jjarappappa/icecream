@@ -21,4 +21,9 @@ class UserController (
     fun getProfile(): UserProfileResponse {
         return userService.getProfile();
     }
+
+    @PutMapping("/profileImg")
+    fun updateProfileImage(@RequestParam("img") img: String) {
+        userService.updateProfileImage(img);
+    }
 }
