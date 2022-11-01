@@ -1,10 +1,7 @@
 package com.jjarappappa.imom.global.error
 
-import com.jjarappappa.imom.global.error.exception.ErrorCode
+import com.jjarappappa.imom.global.error.exception.ErrorProperty
 
 class ErrorResponse(
-    val status: Int,
-    val message: String,
-) {
-    constructor(errorCode: ErrorCode): this(errorCode.status, errorCode.message)
-}
+    val errorProperty: ErrorProperty
+)
