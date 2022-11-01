@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 class YoutubeFacade(
     private val youtubeRepository: YoutubeRepository,
 ) {
-    fun getYoutubeById(id: Long): Youtube {
+    fun getYoutubeById(id: String): Youtube {
         return youtubeRepository.findByIdOrNull(id)
             ?: throw YoutubeNotFoundException
     }
