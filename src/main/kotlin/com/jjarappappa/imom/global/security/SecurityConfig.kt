@@ -1,5 +1,7 @@
 package com.jjarappappa.imom.global.security
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.jjarappappa.imom.global.error.filter.GlobalErrorFilter
 import com.jjarappappa.imom.global.security.auth.AuthDetailsService
 import com.jjarappappa.imom.global.security.jwt.JwtProvider
 import com.jjarappappa.imom.global.security.jwt.filter.JwtAuthenticationFilter
@@ -15,10 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig (
+class SecurityConfig(
     private val authDetailsService: AuthDetailsService,
-    private val jwtProvider: JwtProvider
-){
+    private val jwtProvider: JwtProvider,
+    private val objectMapper: ObjectMapper
+) {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder {
@@ -38,8 +41,9 @@ class SecurityConfig (
             .authorizeRequests()
             .anyRequest().permitAll()
 
-            http
-                .addFilterBefore(JwtAuthenticationFilter(authDetailsService, jwtProvider), UsernamePasswordAuthenticationFilter::class.java)
+        http
+            .addFilterBefore(JwtAuthenticationFilter(authDetailsService, jwtProvider), UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(GlobalErrorFilter(objectMapper), JwtAuthenticationFilter::class.java)
 
         return http.build()
     }
