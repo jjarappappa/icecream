@@ -6,11 +6,13 @@ import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.CreateBoardReq
 import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.UpdateBoardRequest
 import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardDetailResponse
 import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardListResponse
+import com.jjarappappa.imom.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 
 @Service
 class BoardServiceImpl(
     private val boardRepository: BoardRepository,
+    private val userFacade: UserFacade,
 ): BoardService {
     override fun getBoardList(): BoardListResponse {
         TODO("Not yet implemented")
@@ -21,8 +23,13 @@ class BoardServiceImpl(
     }
 
     override fun createBoard(request: CreateBoardRequest): Nothing {
+        val user = userFacade.getCurrentUser()
         boardRepository.save(
             Board(
+                title = request.title,
+                content = request.content,
+                type = request.type,
+                user = user
             )
         )
     }
