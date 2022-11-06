@@ -27,13 +27,13 @@ class BoardController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createBoard(@RequestBody @Valid createBoardRequest: CreateBoardRequest) {
-        boardService.createBoard()
+    fun createBoard(@RequestBody @Valid request: CreateBoardRequest) {
+        boardService.createBoard(request)
     }
 
     @PutMapping("/{board-id}")
-    fun updateBoard(@PathVariable(name = "board-id") boardId: Long, @RequestBody @Valid updateBoardRequest: UpdateBoardRequest) {
-        boardService.updateBoard(boardId, updateBoardRequest)
+    fun updateBoard(@PathVariable(name = "board-id") boardId: Long, @RequestBody @Valid request: UpdateBoardRequest) {
+        boardService.updateBoard(boardId, request)
     }
 
     @DeleteMapping("/{board-id}")

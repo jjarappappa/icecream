@@ -1,5 +1,6 @@
 package com.jjarappappa.imom.domain.board.service
 
+import com.jjarappappa.imom.domain.board.domain.Board
 import com.jjarappappa.imom.domain.board.domain.repository.BoardRepository
 import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.CreateBoardRequest
 import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.UpdateBoardRequest
@@ -19,11 +20,14 @@ class BoardServiceImpl(
         TODO("Not yet implemented")
     }
 
-    override fun createBoard(createBoardRequest: CreateBoardRequest): Nothing {
-        TODO("Not yet implemented")
+    override fun createBoard(request: CreateBoardRequest): Nothing {
+        boardRepository.save(
+            Board(
+            )
+        )
     }
 
-    override fun updateBoard(boardId: Long, updateBordRequest: UpdateBoardRequest): Nothing {
+    override fun updateBoard(boardId: Long, request: UpdateBoardRequest): Nothing {
         TODO("Not yet implemented")
     }
 
