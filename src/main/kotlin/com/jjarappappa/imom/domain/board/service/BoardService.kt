@@ -8,7 +8,7 @@ import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardListResp
 interface BoardService {
     fun getBoardList(): BoardListResponse
     fun getBoardDetail(boardId: Long): BoardDetailResponse
-    fun createBoard(request: CreateBoardRequest): Nothing
-    fun updateBoard(boardId: Long, request: UpdateBoardRequest): Nothing
-    fun deleteBoard(boardId: Long): Nothing
+    fun createBoard(request: CreateBoardRequest)
+    fun updateBoard(boardId: Long, request: UpdateBoardRequest)
+    fun deleteBoard(boardId: Long)
 }

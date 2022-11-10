@@ -8,6 +8,7 @@ import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardDetailRe
 import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardListResponse
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class BoardServiceImpl(
@@ -22,7 +23,7 @@ class BoardServiceImpl(
         TODO("Not yet implemented")
     }
 
-    override fun createBoard(request: CreateBoardRequest): Nothing {
+    override fun createBoard(request: CreateBoardRequest) {
         val user = userFacade.getCurrentUser()
         boardRepository.save(
             Board(
@@ -38,8 +39,7 @@ class BoardServiceImpl(
         TODO("Not yet implemented")
     }
 
-    override fun deleteBoard(boardId: Long): Nothing {
-        TODO("Not yet implemented")
+    override fun deleteBoard(boardId: Long) {
+        boardRepository.deleteById(boardId)
     }
-
 }
