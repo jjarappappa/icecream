@@ -1,6 +1,7 @@
 package com.jjarappappa.imom.domain.board.domain
 
 import com.jjarappappa.imom.domain.board.domain.type.BoardType
+import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.UpdateBoardRequest
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import javax.persistence.*
@@ -25,4 +26,10 @@ class Board(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 ): BaseTimeEntity() {
+
+    fun updateBoard(request: UpdateBoardRequest) {
+        this.title = request.title
+        this.content = request.content
+        this.type = request.type
+    }
 }

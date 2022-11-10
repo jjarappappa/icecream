@@ -2,6 +2,7 @@ package com.jjarappappa.imom.domain.board.service
 
 import com.jjarappappa.imom.domain.board.domain.Board
 import com.jjarappappa.imom.domain.board.domain.repository.BoardRepository
+import com.jjarappappa.imom.domain.board.facade.BoardFacade
 import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.CreateBoardRequest
 import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.UpdateBoardRequest
 import com.jjarappappa.imom.domain.board.presentation.dto.response.BoardDetailResponse
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional
 class BoardServiceImpl(
     private val boardRepository: BoardRepository,
     private val userFacade: UserFacade,
+    private val boardFacade: BoardFacade,
 ): BoardService {
     override fun getBoardList(): BoardListResponse {
         TODO("Not yet implemented")
@@ -35,8 +37,9 @@ class BoardServiceImpl(
         )
     }
 
-    override fun updateBoard(boardId: Long, request: UpdateBoardRequest): Nothing {
-        TODO("Not yet implemented")
+    override fun updateBoard(boardId: Long, request: UpdateBoardRequest) {
+        val board = boardFacade.getBoard(boardId)
+        board.updateBoard(request)
     }
 
     override fun deleteBoard(boardId: Long) {
