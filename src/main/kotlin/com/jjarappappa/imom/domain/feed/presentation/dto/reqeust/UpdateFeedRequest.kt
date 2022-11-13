@@ -1,20 +1,20 @@
-package com.jjarappappa.imom.domain.board.presentation.dto.reqeust
+package com.jjarappappa.imom.domain.feed.presentation.dto.reqeust
 
-import com.jjarappappa.imom.domain.board.domain.type.BoardType
+import com.jjarappappa.imom.domain.feed.domain.type.FeedType
 import javax.validation.constraints.Max
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
-data class CreateBoardRequest(
+data class UpdateFeedRequest(
 
     @field:NotBlank
     @field:Max(30)
-    var title: String,
+    val title: String,
 
     @field:NotBlank
     @field:Max(2000)
-    var content: String,
+    val content: String,
 
     @field:NotNull
-    var type: BoardType,
+    val type: FeedType,
 )

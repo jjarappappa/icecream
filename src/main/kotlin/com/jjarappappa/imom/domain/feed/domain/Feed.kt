@@ -1,14 +1,14 @@
-package com.jjarappappa.imom.domain.board.domain
+package com.jjarappappa.imom.domain.feed.domain
 
-import com.jjarappappa.imom.domain.board.domain.type.BoardType
-import com.jjarappappa.imom.domain.board.presentation.dto.reqeust.UpdateBoardRequest
+import com.jjarappappa.imom.domain.feed.domain.type.FeedType
+import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.UpdateFeedRequest
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import javax.persistence.*
 
 @Entity
-@Table(name = "tbl_board")
-class Board(
+@Table(name = "tbl_feed")
+class Feed(
     @Column(length = 30, nullable = false)
     var title: String,
 
@@ -17,7 +17,7 @@ class Board(
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    var type: BoardType,
+    var type: FeedType,
 
     @ManyToOne(fetch = FetchType.LAZY)
     var user: User,
@@ -27,7 +27,7 @@ class Board(
     var id: Long? = null
 ): BaseTimeEntity() {
 
-    fun updateBoard(request: UpdateBoardRequest) {
+    fun updateFeed(request: UpdateFeedRequest) {
         this.title = request.title
         this.content = request.content
         this.type = request.type
