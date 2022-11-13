@@ -1,10 +1,12 @@
 package com.jjarappappa.imom.domain.feed.presentation
 
+import com.jjarappappa.imom.domain.feed.domain.type.FeedType
 import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.CreateFeedRequest
 import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.UpdateFeedRequest
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedDetailResponse
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedListResponse
 import com.jjarappappa.imom.domain.feed.service.FeedServiceImpl
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -16,8 +18,8 @@ class FeedController(
 ) {
 
     @GetMapping
-    fun getFeedList(): FeedListResponse {
-        return feedService.getFeedList()
+    fun getFeedList(@RequestParam type: FeedType, pageable: Pageable): FeedListResponse {
+        return feedService.getFeedList(type, pageable)
     }
 
     @GetMapping("/{feed-id}")
