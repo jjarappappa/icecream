@@ -8,6 +8,7 @@ import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.UpdateFeedReque
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedDetailResponse
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedListResponse
 import com.jjarappappa.imom.domain.user.facade.UserFacade
+import com.jjarappappa.imom.domain.user.presentation.dto.response.UserProfileResponse
 import org.springframework.stereotype.Service
 
 @Service
@@ -21,7 +22,15 @@ class FeedServiceImpl(
     }
 
     override fun getFeedDetail(feedId: Long): FeedDetailResponse {
-        TODO("Not yet implemented")
+        val feed = feedFacade.getFeed(feedId)
+
+        return FeedDetailResponse(
+            title = feed.title,
+            content = feed.content,
+            type = feed.type,
+            user = UserProfileResponse.of(feed.user),
+            createdAt = feed.createdAt!!
+        )
     }
 
     override fun createFeed(request: CreateFeedRequest) {
