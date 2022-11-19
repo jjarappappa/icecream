@@ -23,29 +23,13 @@ class FeedServiceImpl(
     override fun getFeedList(type: FeedType, pageable: Pageable): FeedListResponse {
         return FeedListResponse(
             feedList = feedRepository.findFeedsByType(type, pageable)
-                .map { createFeedResponse(it) }
-        )
-    }
-
-    private fun createFeedResponse(feed: Feed): FeedResponse {
-        return FeedResponse(
-            id = feed.id!!,
-            title = feed.title,
-            username = feed.user.name,
-            createdAt = feed.createdAt!!
+                .map { FeedResponse.of(it) }
         )
     }
 
     override fun getFeedDetail(feedId: Long): FeedDetailResponse {
         val feed = feedFacade.getFeed(feedId)
-
-        return FeedDetailResponse(
-            title = feed.title,
-            content = feed.content,
-            type = feed.type,
-            user = UserProfileResponse.of(feed.user),
-            createdAt = feed.createdAt!!
-        )
+        return FeedDetailResponse.of(feed)
     }
 
     override fun createFeed(request: CreateFeedRequest) {
