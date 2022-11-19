@@ -50,14 +50,14 @@ class FeedServiceImpl(
 
     override fun createFeed(request: CreateFeedRequest) {
         val user = userFacade.getCurrentUser()
-        feedRepository.save(
-            Feed(
-                title = request.title,
-                content = request.content,
-                type = request.type,
-                user = user
-            )
+        val feed = Feed(
+            title = request.title,
+            content = request.content,
+            type = request.type,
+            user = user
         )
+
+        feedRepository.save(feed)
     }
 
     override fun updateFeed(feedId: Long, request: UpdateFeedRequest) {
