@@ -1,6 +1,5 @@
 package com.jjarappappa.imom.domain.information.service
 
-import com.jjarappappa.imom.domain.information.Information
 import com.jjarappappa.imom.domain.information.domain.repository.InformationRepository
 import com.jjarappappa.imom.domain.information.facade.InformationFacade
 import com.jjarappappa.imom.domain.information.presentation.dto.FindInformationRequest
@@ -45,5 +44,10 @@ class InformationService(
             category = information.category,
             images = information.images,
         )
+    }
+
+    @Transactional
+    fun deleteInformation(id: Long) {
+        informationRepository.deleteById(id)
     }
 }

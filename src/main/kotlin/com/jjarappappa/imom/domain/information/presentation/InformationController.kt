@@ -5,7 +5,9 @@ import com.jjarappappa.imom.domain.information.presentation.dto.InformationRespo
 import com.jjarappappa.imom.domain.information.presentation.dto.UpdateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.CreateInformationRequest
 import com.jjarappappa.imom.domain.information.service.InformationService
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -32,5 +34,10 @@ class InformationController(
     @PutMapping
     fun updateInformation(@RequestBody @Valid request: UpdateInformationRequest) {
         informationService.updateInformation(request)
+    }
+
+    @DeleteMapping("/{informationId}")
+    fun deleteInformation(@PathVariable(name = "informationId") id: Long) {
+        informationService.deleteInformation(id)
     }
 }
