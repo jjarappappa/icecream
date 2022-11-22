@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository: JpaRepository<User, Long> {
 
-    fun existsByNickname(nickName: String): Boolean;
+    fun existsByNickname(nickName: String): Boolean
 
-    fun existsByEmail(email: String): Boolean;
+    fun existsByEmail(email: String): Boolean
 
-    fun existsByPhoneNumber(phoneNumber: String): Boolean;
+    fun existsByPhoneNumber(phoneNumber: String): Boolean
 
-    fun findByEmail(email: String): User
+    fun findByEmail(email: String): User?
 }
