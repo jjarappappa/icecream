@@ -2,6 +2,7 @@ package com.jjarappappa.imom.domain.information
 
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
+import java.lang.ProcessHandle.Info
 import javax.persistence.Entity
 import javax.persistence.Enumerated
 import javax.persistence.ManyToOne
@@ -18,14 +19,14 @@ import javax.persistence.GeneratedValue
 @Entity
 @Table(name = "tbl_information")
 class Information(
-    val title: String,
-    val content: String,
+    var title: String,
+    var content: String,
 
     @Enumerated(EnumType.STRING)
-    val category: Category,
+    var category: Category,
 
     @ElementCollection(fetch = FetchType.LAZY)
-    val images: MutableList<String>,
+    var images: MutableList<String>,
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
@@ -34,6 +35,18 @@ class Information(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
+}
+
+fun Information.update(
+    title: String,
+    content: String,
+    category: Category,
+    images: MutableList<String>
+) {
+    this.title = title
+    this.content = content
+    this.category = category
+    this.images = images
 }
 
 enum class Category {

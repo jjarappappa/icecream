@@ -2,10 +2,13 @@ package com.jjarappappa.imom.domain.information.service
 
 import com.jjarappappa.imom.domain.information.Information
 import com.jjarappappa.imom.domain.information.domain.repository.InformationRepository
+import com.jjarappappa.imom.domain.information.facade.InformationFacade
 import com.jjarappappa.imom.domain.information.presentation.dto.FindInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.InformationResponse
+import com.jjarappappa.imom.domain.information.presentation.dto.UpdateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.CreateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.toEntity
+import com.jjarappappa.imom.domain.information.update
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional
 class InformationService(
     private val informationRepository: InformationRepository,
     private val userFacade: UserFacade,
+    private val informationFacade: InformationFacade,
 ) {
 
     @Transactional
@@ -29,5 +33,17 @@ class InformationService(
         val information = informationRepository.findByCategory(category)
         return information
             .map { InformationResponse.of(it) }
+    }
+
+    @Transactional
+    fun updateInformation(request: UpdateInformationRequest) {
+        val id = request.id
+        val information = informationFacade.findInformationById(id)
+        information.update(
+            title = information.title,
+            content = information.content,
+            category = information.category,
+            images = information.images,
+        )
     }
 }
