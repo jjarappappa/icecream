@@ -1,7 +1,7 @@
 package com.jjarappappa.imom.domain.information.presentation.dto.request
 
-import com.jjarappappa.imom.domain.information.Category
-import com.jjarappappa.imom.domain.information.Information
+import com.jjarappappa.imom.domain.information.domain.Category
+import com.jjarappappa.imom.domain.information.domain.Information
 import com.jjarappappa.imom.domain.user.domain.User
 import javax.validation.constraints.NotBlank
 

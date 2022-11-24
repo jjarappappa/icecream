@@ -1,6 +1,6 @@
 package com.jjarappappa.imom.domain.information.presentation.dto
 
-import com.jjarappappa.imom.domain.information.Information
+import com.jjarappappa.imom.domain.information.domain.Information
 
 data class InformationResponse(
     val title: String,

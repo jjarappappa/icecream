@@ -1,6 +1,6 @@
 package com.jjarappappa.imom.domain.information.facade
 
-import com.jjarappappa.imom.domain.information.Information
+import com.jjarappappa.imom.domain.information.domain.Information
 import com.jjarappappa.imom.domain.information.domain.repository.InformationRepository
 import com.jjarappappa.imom.domain.information.exception.InformationNotFoundException
 import org.springframework.stereotype.Component

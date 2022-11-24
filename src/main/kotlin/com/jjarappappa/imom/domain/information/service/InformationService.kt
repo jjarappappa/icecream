@@ -7,7 +7,7 @@ import com.jjarappappa.imom.domain.information.presentation.dto.InformationRespo
 import com.jjarappappa.imom.domain.information.presentation.dto.UpdateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.CreateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.toEntity
-import com.jjarappappa.imom.domain.information.update
+import com.jjarappappa.imom.domain.information.domain.update
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
