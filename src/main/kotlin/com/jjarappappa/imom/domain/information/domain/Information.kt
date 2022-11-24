@@ -3,7 +3,18 @@ package com.jjarappappa.imom.domain.information.domain
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import org.hibernate.validator.constraints.Length
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.Enumerated
+import javax.persistence.ManyToOne
+import javax.persistence.Table
+import javax.persistence.JoinColumn
+import javax.persistence.EnumType
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
+import javax.persistence.ElementCollection
+import javax.persistence.Id
+import javax.persistence.GenerationType
+import javax.persistence.GeneratedValue
 
 @Entity
 @Table(name = "tbl_information")
