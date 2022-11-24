@@ -10,7 +10,6 @@ import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedDetailResp
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedListResponse
 import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedResponse
 import com.jjarappappa.imom.domain.user.facade.UserFacade
-import com.jjarappappa.imom.domain.user.presentation.dto.response.UserProfileResponse
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 

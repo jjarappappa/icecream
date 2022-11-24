@@ -5,6 +5,10 @@ spring:
     username: ice
     password: icecream
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   jpa:
     properties:
       hibernate:
