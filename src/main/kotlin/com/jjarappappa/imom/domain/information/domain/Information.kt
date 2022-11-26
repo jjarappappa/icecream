@@ -1,21 +1,9 @@
 package com.jjarappappa.imom.domain.information.domain
 
+import com.jjarappappa.imom.domain.information.domain.type.Category
 import com.jjarappappa.imom.domain.user.domain.User
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
-import org.hibernate.validator.constraints.Length
-import javax.persistence.Entity
-import javax.persistence.Enumerated
-import javax.persistence.ManyToOne
-import javax.persistence.Table
-import javax.persistence.JoinColumn
-import javax.persistence.EnumType
-import javax.persistence.FetchType
-import javax.persistence.CascadeType
-import javax.persistence.Column
-import javax.persistence.ElementCollection
-import javax.persistence.Id
-import javax.persistence.GenerationType
-import javax.persistence.GeneratedValue
+import javax.persistence.*
 
 @Entity
 @Table(name = "tbl_information")
@@ -54,9 +42,4 @@ fun Information.update(
     this.content = content
     this.category = category
     this.images = images
-}
-
-enum class Category {
-    MATERNITY,
-    PARENTING,
 }
