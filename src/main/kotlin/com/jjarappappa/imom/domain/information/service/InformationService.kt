@@ -1,8 +1,8 @@
 package com.jjarappappa.imom.domain.information.service
 
 import com.jjarappappa.imom.domain.information.domain.repository.InformationRepository
+import com.jjarappappa.imom.domain.information.domain.type.Category
 import com.jjarappappa.imom.domain.information.facade.InformationFacade
-import com.jjarappappa.imom.domain.information.presentation.dto.FindInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.InformationResponse
 import com.jjarappappa.imom.domain.information.presentation.dto.UpdateInformationRequest
 import com.jjarappappa.imom.domain.information.presentation.dto.request.CreateInformationRequest
@@ -27,8 +27,7 @@ class InformationService(
     }
 
     @Transactional(readOnly = true)
-    fun findInformation(request: FindInformationRequest): List<InformationResponse> {
-        val category = request.category
+    fun findInformation(category: Category): List<InformationResponse> {
         val information = informationRepository.findByCategory(category)
         return information
             .map { InformationResponse.of(it) }
