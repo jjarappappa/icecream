@@ -38,7 +38,7 @@ class InformationController(
     }
 
     @DeleteMapping("/{information-id}")
-    fun deleteInformation(@PathVariable(name = "informationId") id: Long) {
+    fun deleteInformation(@PathVariable(name = "information-id") id: Long) {
         informationService.deleteInformation(id)
     }
 }
