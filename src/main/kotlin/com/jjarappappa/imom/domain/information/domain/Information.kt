@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.EnumType
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
+import javax.persistence.Column
 import javax.persistence.ElementCollection
 import javax.persistence.Id
 import javax.persistence.GenerationType
@@ -19,23 +20,27 @@ import javax.persistence.GeneratedValue
 @Entity
 @Table(name = "tbl_information")
 class Information(
-    @Length(min = 3, max = 20)
+    @Column(nullable = false, length = 15)
     var title: String,
-    @Length(min = 1, max = 1500)
+
+    @Column(nullable = false, length = 1500)
     var content: String,
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var category: Category,
 
+    @Column(nullable = false)
     @ElementCollection(fetch = FetchType.LAZY)
     var images: MutableList<String>,
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     val user: User,
 ) : BaseTimeEntity() {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     val id: Long = 0
 }
 
