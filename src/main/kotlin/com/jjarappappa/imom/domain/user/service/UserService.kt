@@ -41,7 +41,7 @@ class UserService (
     }
 
     private fun checkPassword(actual: String, expected: String) {
-        if (passwordEncoder.matches(actual, expected)) {
+        if (!passwordEncoder.matches(actual, expected)) {
             throw PasswordMismatchException.EXCEPTION
         }
     }
