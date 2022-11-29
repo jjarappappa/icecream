@@ -39,7 +39,14 @@ class LectureService(
     @Transactional
     fun updateLecture(id: Long, request: UpdateLectureRequest) {
         val lecture = lectureFacade.getLecture(id)
-        lecture.updateLecture(request)
+        lecture.updateLecture(
+            request.title,
+            request.content,
+            request.place,
+            request.target,
+            request.period,
+            request.date
+        )
     }
 
     @Transactional

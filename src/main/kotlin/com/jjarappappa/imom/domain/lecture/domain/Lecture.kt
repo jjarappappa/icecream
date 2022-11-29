@@ -1,6 +1,6 @@
 package com.jjarappappa.imom.domain.lecture.domain
 
-import com.jjarappappa.imom.domain.lecture.presentation.dto.request.UpdateLectureRequest
+import com.jjarappappa.imom.domain.lecture.presentation.dto.UpdateLectureRequest
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import java.time.LocalDate
 import javax.persistence.*
@@ -32,12 +32,12 @@ class Lecture(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    fun updateLecture(request: UpdateLectureRequest) {
-        this.title = request.title
-        this.content = request.content
-        this.place = request.place
-        this.target = request.target
-        this.period = request.period
-        this.date = request.date
+    fun updateLecture(title: String, content: String, place: String, target: String, period: LocalDate, date: LocalDate) {
+        this.title = title
+        this.content = content
+        this.place = place
+        this.target = target
+        this.period = period
+        this.date = date
     }
 }
