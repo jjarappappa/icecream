@@ -5,10 +5,9 @@ import com.jjarappappa.imom.domain.lecture.presentation.dto.request.UpdateLectur
 import com.jjarappappa.imom.domain.lecture.presentation.dto.response.LectureDetailResponse
 import com.jjarappappa.imom.domain.lecture.presentation.dto.response.LectureListResponse
 import com.jjarappappa.imom.domain.lecture.service.LectureService
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/lecture")
 class LectureController(
     private val lectureService: LectureService,
