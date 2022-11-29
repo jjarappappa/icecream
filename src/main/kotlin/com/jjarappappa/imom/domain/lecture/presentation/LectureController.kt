@@ -19,7 +19,7 @@ class LectureController(
     }
 
     @GetMapping("/{id}")
-    fun getLectureDetail(@RequestParam id: Long): LectureDetailResponse {
+    fun getLectureDetail(@PathVariable id: Long): LectureDetailResponse {
         return lectureService.getLectureDetail(id)
     }
 
