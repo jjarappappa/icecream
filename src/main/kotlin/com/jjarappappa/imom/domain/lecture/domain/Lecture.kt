@@ -1,4 +1,4 @@
-package com.jjarappappa.imom.domain.lecture
+package com.jjarappappa.imom.domain.lecture.domain
 
 import com.jjarappappa.imom.global.entity.BaseTimeEntity
 import java.time.LocalDate
