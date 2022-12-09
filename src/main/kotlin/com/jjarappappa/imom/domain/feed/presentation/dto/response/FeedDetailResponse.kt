@@ -11,17 +11,17 @@ data class FeedDetailResponse(
     val type: FeedType,
     val user: UserProfileResponse,
     val createdAt: LocalDateTime,
-
-    // TODO :: 댓글 추가
+    val commentList: CommentListResponse
 ) {
     companion object {
-        fun of(feed: Feed): FeedDetailResponse {
+        fun of(feed: Feed, commentList: CommentListResponse): FeedDetailResponse {
             return FeedDetailResponse(
                 title = feed.title,
                 content = feed.content,
                 type = feed.type,
                 user = UserProfileResponse.of(feed.user),
-                createdAt = feed.createdAt!!
+                createdAt = feed.createdAt!!,
+                commentList = commentList
             )
         }
     }

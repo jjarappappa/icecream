@@ -1,14 +1,13 @@
 package com.jjarappappa.imom.domain.feed.service
 
 import com.jjarappappa.imom.domain.feed.domain.Feed
+import com.jjarappappa.imom.domain.feed.domain.repository.CommentRepository
 import com.jjarappappa.imom.domain.feed.domain.repository.FeedRepository
 import com.jjarappappa.imom.domain.feed.domain.type.FeedType
 import com.jjarappappa.imom.domain.feed.facade.FeedFacade
 import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.CreateFeedRequest
 import com.jjarappappa.imom.domain.feed.presentation.dto.reqeust.UpdateFeedRequest
-import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedDetailResponse
-import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedListResponse
-import com.jjarappappa.imom.domain.feed.presentation.dto.response.FeedResponse
+import com.jjarappappa.imom.domain.feed.presentation.dto.response.*
 import com.jjarappappa.imom.domain.user.facade.UserFacade
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -18,6 +17,7 @@ class FeedServiceImpl(
     private val feedRepository: FeedRepository,
     private val userFacade: UserFacade,
     private val feedFacade: FeedFacade,
+    private val commentRepository: CommentRepository,
 ) : FeedService {
     override fun getFeedList(type: FeedType, pageable: Pageable): FeedListResponse {
         return FeedListResponse(
@@ -28,7 +28,9 @@ class FeedServiceImpl(
 
     override fun getFeedDetail(feedId: Long): FeedDetailResponse {
         val feed = feedFacade.getFeed(feedId)
-        return FeedDetailResponse.of(feed)
+        val commentList = CommentListResponse(
+            commentRepository.findAllByFeed(feed).map { CommentResponse.of(it) })
+        return FeedDetailResponse.of(feed, commentList)
     }
 
     override fun createFeed(request: CreateFeedRequest) {
