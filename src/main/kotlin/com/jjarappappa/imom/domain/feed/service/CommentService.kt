@@ -22,4 +22,8 @@ class CommentService(
             )
         )
     }
+
+    fun deleteComment(id: Long) {
+        commentRepository.deleteById(id)
+    }
 }
