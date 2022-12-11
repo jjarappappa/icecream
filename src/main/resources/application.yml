@@ -10,11 +10,14 @@ spring:
       matching-strategy: ant_path_matcher
 
   jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
+
     generate-ddl: true
-    show-sql: true
     hibernate:
       ddl-auto: update
 
@@ -23,3 +26,14 @@ jwt:
   prefix: Bearer
   header: Authorization
   secret-key: ${JWT_SECRET}
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:mysql://imom-database:${DB_PORT}/${DB_NAME}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
