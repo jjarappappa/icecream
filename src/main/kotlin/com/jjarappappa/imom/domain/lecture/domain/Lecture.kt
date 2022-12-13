@@ -24,19 +24,28 @@ class Lecture(
     var period: LocalDate,
 
     @Column(nullable = false)
-    var date: LocalDate,
+    var teacher: String,
 
-    ) : BaseTimeEntity() {
+    @Column(nullable = false)
+    var luckyDate: LocalDate,
+
+    @Column(nullable = false)
+    var date: LocalDate
+
+) : BaseTimeEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    fun updateLecture(title: String, content: String, place: String, target: String, period: LocalDate, date: LocalDate) {
+    fun updateLecture(title: String, content: String, place: String, target: String, period: LocalDate, teacher: String, luckyDate: LocalDate, date: LocalDate) {
         this.title = title
         this.content = content
         this.place = place
         this.target = target
         this.period = period
+        this.teacher = teacher
+        this.luckyDate = luckyDate
         this.date = date
     }
 }

@@ -9,5 +9,7 @@ data class UpdateLectureRequest(
     val place: String,
     val target: String,
     val period: LocalDate,
+    val teacher: String,
+    val luckyDate: LocalDate,
     val date: LocalDate,
 )

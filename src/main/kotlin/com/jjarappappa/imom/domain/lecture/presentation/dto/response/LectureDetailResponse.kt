@@ -11,6 +11,8 @@ data class LectureDetailResponse(
     val place: String,
     val target: String,
     val period: LocalDate,
+    val teacher: String,
+    val luckyDate: LocalDate,
     val date: LocalDate,
     val createdAt: LocalDateTime,
 ) {
@@ -23,6 +25,8 @@ data class LectureDetailResponse(
                 place = lecture.place,
                 target = lecture.target,
                 period = lecture.period,
+                teacher = lecture.teacher,
+                luckyDate = lecture.luckyDate,
                 date = lecture.date,
                 createdAt = lecture.createdAt!!
             )

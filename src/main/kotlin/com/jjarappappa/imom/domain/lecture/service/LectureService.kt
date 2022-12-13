@@ -45,6 +45,8 @@ class LectureService(
             request.place,
             request.target,
             request.period,
+            request.teacher,
+            request.luckyDate,
             request.date
         )
     }

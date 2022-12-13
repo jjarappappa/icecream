@@ -11,6 +11,8 @@ data class CreateLectureRequest(
     val target: String,
     val period: LocalDate,
     val date: LocalDate,
+    val teacher: String,
+    val luckyDate: LocalDate
 ) {
 
     fun toEntity(): Lecture {
@@ -20,7 +22,9 @@ data class CreateLectureRequest(
             place = place,
             target = target,
             period = period,
-            date = date
+            date = date,
+            teacher = teacher,
+            luckyDate = luckyDate
         )
     }
 }
