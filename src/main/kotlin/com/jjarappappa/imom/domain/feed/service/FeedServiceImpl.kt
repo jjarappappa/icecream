@@ -21,7 +21,7 @@ class FeedServiceImpl(
 ) : FeedService {
     override fun getFeedList(type: FeedType, pageable: Pageable): FeedListResponse {
         return FeedListResponse(
-            feedList = feedRepository.findFeedsByType(type, pageable)
+            feedList = feedRepository.findFeedsByTypeOrderByIdDesc(type, pageable)
                 .map { FeedResponse.of(it) }
         )
     }

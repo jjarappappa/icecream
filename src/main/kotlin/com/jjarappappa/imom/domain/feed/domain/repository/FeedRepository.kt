@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface FeedRepository: JpaRepository<Feed, Long> {
-    fun findFeedsByType(type: FeedType, pageable: Pageable): List<Feed>
+    fun findFeedsByTypeOrderByIdDesc(type: FeedType, pageable: Pageable): List<Feed>
 }
