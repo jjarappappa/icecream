@@ -6,5 +6,6 @@ enum class LectureErrorProperty(
     override val status: Int,
     override val message: String
 ) : ErrorProperty {
-    LECTURE_NOT_FOUND(404, "존재하지 않는 유튜브입니다."),
+    LECTURE_NOT_FOUND(404, "존재하지 않는 강의입니다."),
+    LECTURE_ALREADY_EXISTS(403, "이미 신청한 강의입니다."),
 }

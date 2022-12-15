@@ -23,7 +23,7 @@ class Lecture(
     @Column(nullable = false)
     var period: LocalDate,
 
-    @Column(nullable = false)
+    @Column(length = 50, nullable = false)
     var teacher: String,
 
     @Column(nullable = false)
