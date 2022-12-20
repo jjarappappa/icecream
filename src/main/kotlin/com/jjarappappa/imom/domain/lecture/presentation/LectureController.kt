@@ -6,6 +6,7 @@ import com.jjarappappa.imom.domain.lecture.presentation.dto.response.LectureDeta
 import com.jjarappappa.imom.domain.lecture.presentation.dto.response.LectureListResponse
 import com.jjarappappa.imom.domain.lecture.service.LectureService
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/lecture")
@@ -24,7 +25,7 @@ class LectureController(
     }
 
     @PostMapping
-    fun createLecture(@RequestBody request: CreateLectureRequest) {
+    fun createLecture(@RequestBody @Valid request: CreateLectureRequest) {
         lectureService.createLecture(request)
     }
 

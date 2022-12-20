@@ -13,7 +13,7 @@ class Youtube(
     var title: String,
 
     @Id
-    @Column(length = 10, nullable = false, unique = true)
+    @Column(length = 15, nullable = false, unique = true)
     var id: String
 ): BaseTimeEntity() {
     fun updateYoutube(title: String) {

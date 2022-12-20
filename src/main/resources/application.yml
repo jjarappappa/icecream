@@ -26,6 +26,8 @@ jwt:
   prefix: Bearer
   header: Authorization
   secret-key: ${JWT_SECRET}
+
+debug: true
 ---
 spring:
   config:
